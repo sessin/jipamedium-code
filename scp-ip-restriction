@@ -1,0 +1,28 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Action": "*",
+      "Resource": "*",
+      "Condition": {
+       "BoolIfExists": {
+          "aws:ViaAWSService": "false"
+        },
+        "NotIpAddressIfExists": {
+          "aws:SourceIp": [
+            "175.208.248.0/24",
+            "4.3.2.1/32"      
+          ]
+        },
+        "StringNotLikeIfExists": {
+          "aws:SourceVPCe": [
+            "vpce-05749ff4617ed2880",
+            "vpce-0e73b15125a6c9946",
+            "vpce-0ac3b3ca41cc6b156"
+          ]
+        }
+      }
+    }
+  ]
+}
